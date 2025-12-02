@@ -23,6 +23,7 @@ number = 50
 
 # part 2
 # bad solution but whatever :(
+# Note to self: rotating is the same in either direction, just need to mirror first
 # 6738
 for instruction in instructions:
     # n = -1 if instruction < 0 else 1
