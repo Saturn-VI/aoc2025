@@ -22,21 +22,15 @@ zero_passed_count = 0
 number = 50
 
 # part 2
-# bad solution but whatever :(
-# Note to self: rotating is the same in either direction, just need to mirror first
-# 6738
 for instruction in instructions:
-    # n = -1 if instruction < 0 else 1
-    # for i in range(abs(instruction)):
-    #     number += n
-    #     if number % 100 == 0:
-    #         zero_passed_count += 1
-    number += instruction
-    diff = abs(int(number / 100))
-    if number < 0:
-        diff += 1
-    zero_passed_count += diff
-    number = ((number % 100) + 100) % 100
+    mirror = instruction < 0
+    if mirror and number > 0:
+        number = 100 - number
+    number += abs(instruction)
+    zero_passed_count += number // 100
+    number = number % 100
+    if mirror and number > 0:
+        number = 100 - number
 
 
 print(f"Part 1: {zero_count}")
